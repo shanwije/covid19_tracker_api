@@ -188,3 +188,5 @@ fabric.properties
 .idea/
 
 config/config.env
+
+package-lock.json

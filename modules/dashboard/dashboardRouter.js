@@ -27,4 +27,16 @@ router.get('/:isoCode/deathsPerDate', async (req, res, next) => {
     }
 });
 
+router.get('/:isoCode/patientsPerDate', async (req, res, next) => {
+    try {
+        const data = await dashboardService.getPatientsPerDateForCountry(
+            req.params.isoCode,
+        );
+        res.status(200).json({ success: true, data });
+    } catch (e) {
+        console.log(e);
+        next(e);
+    }
+});
+
 module.exports = router;

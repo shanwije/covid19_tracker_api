@@ -22,4 +22,20 @@ const getDeathsPerDateForACountry = async (isoCode) => {
     }
 };
 
-module.exports = { getAllDataByCountry, getDeathsPerDateForACountry };
+const getPatientsPerDateForCountry = async (isoCode) => {
+    try {
+        const allDataForTheCountry = await dashboardRepository.getAllQuiresByISOCode(
+            isoCode,
+        );
+        return dashboardManger.getPatientsPerDate(allDataForTheCountry);
+    } catch (error) {
+        console.log(error);
+        return error;
+    }
+};
+
+module.exports = {
+    getAllDataByCountry,
+    getDeathsPerDateForACountry,
+    getPatientsPerDateForCountry,
+};
