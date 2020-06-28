@@ -3,8 +3,7 @@ const path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var aggregatedRouter = require('./aggregatedRouter');
 
 var app = express();
 
@@ -14,7 +13,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+
+// mount routers
+const { BASE_PATH, API_VERSION } = process.env;
+console.log(BASE_PATH, API_VERSION);
+app.use(`/${BASE_PATH}/${API_VERSION}`, aggregatedRouter);
 
 module.exports = app;
