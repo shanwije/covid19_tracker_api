@@ -7,6 +7,13 @@
 var app = require('../app');
 var debug = require('debug')('covid19-tracker-api:server');
 var http = require('http');
+const path = require('path');
+const dotenv = require('dotenv');
+
+// load config
+const configPath = path.resolve('config', 'config.env');
+dotenv.config({ path: configPath, encoding: 'utf8' });
+
 
 /**
  * Get port from environment and store in Express.

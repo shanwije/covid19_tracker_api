@@ -187,4 +187,4 @@ fabric.properties
 
 .idea/
 
-config.env
+config/config.env
